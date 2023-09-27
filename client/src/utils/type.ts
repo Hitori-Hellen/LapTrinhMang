@@ -1,8 +1,8 @@
 export interface TestcaseType {
-    input: string,
-    output: string,
-    sample: boolean,
-    explanation ?: string
+    input: string
+    output: string
+    sample: boolean
+    explanation?: string
 }
 
 export interface PropblemDetailType {
@@ -16,25 +16,24 @@ export interface PropblemDetailType {
 }
 
 export interface ProblemType extends PropblemDetailType {
-    testcase ?: TestcaseType[],
-    updatedAt: string,
+    testcase?: TestcaseType[]
+    updatedAt: string
     createdAt: string
-    _id: string,
-    whoSolved: string[],
+    _id: string
+    whoSolved: string[]
     createdBy: string
 }
 
 export interface UserType {
-    _id: string,
-    googleId: string,
-    displayName: string,
-    image: string
+    _id: string
+    email: string
+    displayName: string
 }
 
 export interface UserSubmissionType {
-    language: string,
-    filepath: string,
-    startedAt: string,
+    language: string
+    filepath: string
+    startedAt: string
     completedAt: string
     verdict: string
     submittedAt: string

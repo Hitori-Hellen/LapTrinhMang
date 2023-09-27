@@ -2,7 +2,7 @@ import { Avatar } from "@nextui-org/react"
 import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
-import { asyncLogin, asyncLogout } from "../store/authSlice"
+import { asyncLogin, reset } from "../store/authSlice"
 import { RootState } from "../store/store"
 import { Modal, Button, Text, Input, Row, Checkbox } from "@nextui-org/react"
 
@@ -14,18 +14,19 @@ export default function Navbar() {
 
     const [visible, setVisible] = React.useState(false)
     const closeHandler = () => {
+        setEmail("")
+        setPassword("")
         setVisible(false)
-        console.log("closed")
     }
     const showLoginForm = async () => {
         setVisible(true)
     }
     const handleLogin = async () => {
-        console.log("login")
         dispatch(asyncLogin({ email, password }) as any)
+        setVisible(false)
     }
     const handleLogout = () => {
-        dispatch(asyncLogout() as any)
+        dispatch(reset())
     }
     return (
         <div className="w-screen relative py-2 z-50">
@@ -47,11 +48,6 @@ export default function Navbar() {
                             className="flex flex-col items-center justify-center cursor-pointer"
                             onClick={handleLogout}
                         >
-                            <img
-                                src={user.image}
-                                alt=""
-                                className="w-8 h-8 rounded-full object-cover object-center"
-                            />
                             <p className="m-0 text-white text-sm hover:underline">
                                 {user.displayName}
                             </p>
@@ -76,9 +72,9 @@ export default function Navbar() {
             >
                 <Modal.Header>
                     <Text id="modal-title" size={18}>
-                        Welcome to
+                        Welcome to{" "}
                         <Text b size={18}>
-                            NextUI
+                            SimpleOJ
                         </Text>
                     </Text>
                 </Modal.Header>
