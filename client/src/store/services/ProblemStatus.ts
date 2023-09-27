@@ -1,9 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const problemStatusApi = createApi({
   reducerPath: "problemStatusApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:5000/api/code/",
+    baseUrl: "http://localhost:5434/api/code/",
   }),
   endpoints: (builder) => ({
     getProblemStatus: builder.query({
@@ -12,4 +12,4 @@ export const problemStatusApi = createApi({
   }),
 });
 
-export const { useGetProblemStatusQuery } = problemStatusApi
+export const { useGetProblemStatusQuery } = problemStatusApi;

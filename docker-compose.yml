@@ -1,15 +1,15 @@
 services:
   client:
     build: ./client
-    ports: 
+    ports:
       - 3000:3000
     volumes:
       - ./client:/app
-  
+
   server:
     build: ./server
     ports:
-      - 5000:5000
+      - 5434:5434
     environment:
       MONGO_URI: mongodb://db/simpleoj
 
@@ -17,7 +17,7 @@ services:
       - ./server:/app
     links:
       - redis:redis
-  
+
   db:
     image: mongo:4.0-xenial
     ports:

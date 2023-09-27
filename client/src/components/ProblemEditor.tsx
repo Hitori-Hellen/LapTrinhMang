@@ -31,7 +31,7 @@ export default function ProblemEditor() {
   useEffect(() => {
     setJobId(JobId);
   }, [JobId]);
- 
+
   // Status polling
   const problemData = useGetProblemStatusQuery(
     jobId,
@@ -55,9 +55,11 @@ export default function ProblemEditor() {
     }
   }, [problemData.data]);
 
-
-
   const handleRun = async () => {
+    if (!user) {
+      toast.error("Please sign in to run code");
+      return;
+    }
     setSkip(false);
     setBottomDrawer("output");
     setOutput("");
