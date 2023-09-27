@@ -12,10 +12,7 @@ const UserSchema = new mongoose.Schema({
   displayName: {
     type: String,
     required: true,
-  },
-  image: {
-    type: String,
-  },
+  }
 })
 
 module.exports = mongoose.model('User', UserSchema)

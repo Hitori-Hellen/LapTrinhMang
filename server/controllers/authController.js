@@ -8,7 +8,6 @@ const register = async (request, response) => {
         email: request.body.email,
         password: request.body.password,
         displayName: request.body.displayName,
-        image: request.body.image,
     });
 
     try {

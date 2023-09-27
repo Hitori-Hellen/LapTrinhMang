@@ -38,17 +38,7 @@ app.use('/api/code', require('./routes/codeRoutes'));
 app.use('/api/problem', require('./routes/problemRoutes'));
 app.use('/api/auth', require('./routes/authRoutes'));
 
-// app.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", {
-//     failureRedirect: "/failed",
-//   }),
-//   (req, res) => {
-//     res.redirect("http://localhost:3000/");
-//   }
-// );
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log("Server is listening"));
 
