@@ -106,6 +106,7 @@ export default function Navbar() {
             size="lg"
             placeholder="Password"
             value={password}
+            type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <Row className="flex-col" justify="flex-end">
