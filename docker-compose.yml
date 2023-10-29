@@ -12,6 +12,7 @@ services:
       - 5434:5434
     environment:
       MONGO_URI: mongodb://db/simpleoj
+      PORT: 5434
 
     volumes:
       - ./server:/app
