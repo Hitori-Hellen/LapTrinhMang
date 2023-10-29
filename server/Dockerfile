@@ -11,7 +11,7 @@ RUN apk add --update python3
 RUN apk add --update redis && \
     redis-server &
 
-COPY package*.json ./
+ADD package*.json ./
 RUN npm install 
 COPY . .
 
