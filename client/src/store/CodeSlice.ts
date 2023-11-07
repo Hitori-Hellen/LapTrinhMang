@@ -87,12 +87,15 @@ export const asyncProgrammemSubmit = createAsyncThunk(
 export const asyncSubmissionGet = createAsyncThunk(
   "code/getSubmission",
   async ({ problemId, userId }: { problemId: string; userId: string }) => {
-    const res = await fetch(`${URL}/code/submission/${problemId}`, {
-      body: JSON.stringify({ userId }),
-    });
-    const data = await res.json();
-    if (res.ok) return data;
-    else toast.error(data);
+    console.log("first");
+    try {
+      const res = await fetch(`${URL}/code/submission/${problemId}/${userId}`);
+      const data = await res.json();
+      if (res.ok) return data;
+      else toast.error(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 );
 

@@ -1,40 +1,41 @@
 export interface TestcaseType {
-    input: string
-    output: string
-    sample: boolean
-    explanation?: string
+  input: string;
+  output: string;
+  sample: boolean;
+  explanation?: string;
 }
 
 export interface PropblemDetailType {
-    slug: string
-    input: string
-    title: string
-    output: string
-    constraints: string
-    statement: string
-    desc: string
+  slug: string;
+  input: string;
+  title: string;
+  output: string;
+  constraints: string;
+  statement: string;
+  desc: string;
 }
 
 export interface ProblemType extends PropblemDetailType {
-    testcase?: TestcaseType[]
-    updatedAt: string
-    createdAt: string
-    _id: string
-    whoSolved: string[]
-    createdBy: string
+  testcase?: TestcaseType[];
+  updatedAt: string;
+  createdAt: string;
+  _id: string;
+  whoSolved: string[];
+  createdBy: string;
 }
 
 export interface UserType {
-    _id: string
-    email: string
-    displayName: string
+  _id: string;
+  email: string;
+  displayName: string;
+  image?: string;
 }
 
 export interface UserSubmissionType {
-    language: string
-    filepath: string
-    startedAt: string
-    completedAt: string
-    verdict: string
-    submittedAt: string
+  language: string;
+  filepath: string;
+  startedAt: string;
+  completedAt: string;
+  verdict: string;
+  submittedAt: string;
 }

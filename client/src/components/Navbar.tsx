@@ -1,11 +1,10 @@
-import { Avatar } from "@nextui-org/react";
-
+import { Button, Checkbox, Input, Modal, Row, Text } from "@nextui-org/react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { asyncLogin, asyncRegister, reset } from "../store/authSlice";
 import { RootState } from "../store/store";
-import { Modal, Button, Text, Input, Row, Checkbox } from "@nextui-org/react";
-import { useState } from "react";
+import GG from "../assets/images/search.png";
 
 export default function Navbar() {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -24,6 +23,11 @@ export default function Navbar() {
   const showLoginForm = async () => {
     setVisible(true);
   };
+
+  const handleLoginOAuth = () => {
+    window.open("http://localhost:5434/api/auth/google", "_self");
+  };
+
   const handleLogin = async () => {
     dispatch(asyncLogin({ email, password }) as any);
     setVisible(false);
@@ -37,6 +41,7 @@ export default function Navbar() {
   const handleLogout = () => {
     dispatch(reset());
   };
+
   return (
     <div className="w-screen relative py-2 z-50">
       <div className="flex items-center font-mono h-full px-12 justify-between z-50">
@@ -47,7 +52,7 @@ export default function Navbar() {
         </h1>
         <div className="flex items-center z-50">
           <Link
-            to={"/create"}
+            to="/create"
             className="mr-8 p-1 px-3 border border-slate-300 rounded-sm text-white hover:bg-white hover:text-black"
           >
             Add Problem
@@ -57,6 +62,11 @@ export default function Navbar() {
               className="flex flex-col items-center justify-center cursor-pointer"
               onClick={handleLogout}
             >
+              <img
+                src={user.image}
+                alt=""
+                className="w-8 h-8 rounded-full object-cover object-center"
+              />
               <p className="m-0 text-white text-sm hover:underline">
                 {user.displayName}
               </p>
@@ -128,6 +138,13 @@ export default function Navbar() {
             >
               {isRegister ? "Login" : "Register"}
             </Text>
+          </Row>
+          <Row
+            className="w-full flex !items-center !justify-center gap-2 py-4 rounded-lg bg-neutral-100 hover:bg-neutral-200 transition-all"
+            onClick={handleLoginOAuth}
+          >
+            <img src={GG} alt="gg" className="aspect-square w-6" />
+            <span className="font-bold">Continue with Google account</span>
           </Row>
         </Modal.Body>
         <Modal.Footer>

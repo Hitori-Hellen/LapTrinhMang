@@ -1,7 +1,13 @@
-const router = require('express').Router()
-const ctrl = require('../controllers/authController')
+const router = require("express").Router();
+const ctrl = require("../controllers/authController");
+const passport = require("passport");
 
-router.post('/register', ctrl.register);
-router.post('/login', ctrl.login);
+router.get("/google", passport.authenticate("google", { scope: ["profile"] }));
+router.get("/success", (req, res) => {
+  res.status(200).json(req.user);
+});
 
-module.exports = router
+router.post("/register", ctrl.register);
+router.post("/login", ctrl.login);
+
+module.exports = router;

@@ -8,10 +8,25 @@ const initialState: InitialStateType = {
 
 const URL = "http://localhost:5434/api";
 
+export const asyncLoginOAuth = createAsyncThunk(
+  "auth/asyncLoginOAuth",
+  async () => {
+    const res = await fetch(`${URL}/auth/success`, { credentials: "include" });
+    const data = await res.json();
+    if (res.ok) {
+      return data;
+    }
+  }
+);
+
+export const asyncLogout = createAsyncThunk("auth/asyncLogout", async () => {
+  await fetch(`${URL}/auth/logout`, { credentials: "include" });
+  return undefined;
+});
+
 export const asyncLogin = createAsyncThunk(
   "auth/asyncLogin",
   async ({ email, password }: { email: string; password: string }) => {
-    console.log("login123", email, password);
     const res = await fetch(`${URL}/auth/login`, {
       method: "POST",
       headers: {
@@ -60,6 +75,12 @@ export const AuthSlice = createSlice({
     },
   },
   extraReducers: {
+    [asyncLoginOAuth.fulfilled.type]: (state, action) => {
+      state.user = action.payload;
+    },
+    [asyncLogout.fulfilled.type]: (state, action) => {
+      state.user = action.payload;
+    },
     [asyncLogin.fulfilled.type]: (state, action) => {
       state.user = action.payload;
     },
