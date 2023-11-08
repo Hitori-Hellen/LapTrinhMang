@@ -3,9 +3,9 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      'sans': ['"Mukta"'],
-      'mono': ['"Ubuntu Mono"']
-    }
+      sans: ['"Mukta"'],
+      mono: ['"Ubuntu Mono"'],
+    },
   },
   plugins: [],
 };

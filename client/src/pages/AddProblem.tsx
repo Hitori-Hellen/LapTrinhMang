@@ -241,7 +241,7 @@ export default function AddProblem() {
           <TestcaseContainer />
         </div>
       </div>
-      <div className="sticky bottom-0 flex items-center justify-end p-4 z-50 border shadow bg-[whitesmoke] space-x-4">
+      <div className="sticky bottom-0 flex items-center justify-end p-4 border shadow bg-[whitesmoke] space-x-4">
         {loading ? (
           <div className="mr-10">
             <Loading type="points" />
